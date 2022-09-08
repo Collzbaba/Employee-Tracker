@@ -1,0 +1,22 @@
+{
+  "name": "package.json",
+  "version": "1.0.0",
+  "description": "employee-tracker",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Collzbaba/Employee-Tracker.git"
+  },
+  "author": "Blessed Adodo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Collzbaba/Employee-Tracker/issues"
+  },
+  "homepage": "https://github.com/Collzbaba/Employee-Tracker#readme",
+  "dependencies": {
+    "pkg": "^5.8.0"
+  }
+}
