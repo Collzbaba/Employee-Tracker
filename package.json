@@ -2,8 +2,9 @@
   "name": "package.json",
   "version": "1.0.0",
   "description": "employee-tracker",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
+    "start": "node ./Main/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -18,8 +19,8 @@
   "homepage": "https://github.com/Collzbaba/Employee-Tracker#readme",
   "dependencies": {
     "console.table": "^0.10.0",
-    "inquirer": "^9.1.1",
-    "mysql": "^2.18.1",
+    "inquirer": "^8.2.4",
+    "mysql2": "^2.3.3",
     "pkg": "^5.8.0"
   }
 }
