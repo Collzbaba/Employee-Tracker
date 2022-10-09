@@ -1,10 +1,12 @@
 //dependencies 
-const db = require("./db");
+const db = require("./db/connection");
 const {prompt} = require("inquirer");
+const { connection } = require("./db");
+const { query } = require("./db/connection");
 require("console.table");
 
 //mysql server.
-//    firstPrompt();
+   firstPrompt();
 // function which prompts the user for what action they should take
 function firstPrompt() {
 
@@ -103,8 +105,8 @@ function viewEmployee() {
   
   function promptInsert(roleChoices) {
   
-    inquirer
-      .prompt([
+    // inquirer
+      prompt([
         {
           type: "input",
           name: "first_name",
@@ -171,8 +173,7 @@ function viewEmployee() {
   // User choose the employee list, then employee is deleted
   function promptDelete(deleteEmployeeChoices) {
   
-    inquirer
-      .prompt([
+      prompt([
         {
           type: "list",
           name: "employeeId",
@@ -252,8 +253,7 @@ function viewEmployee() {
   
   function promptEmployeeRole(employeeChoices, roleChoices) {
   
-    inquirer
-      .prompt([
+      prompt([
         {
           type: "list",
           name: "employeeId",
@@ -291,14 +291,15 @@ function viewEmployee() {
   //"Add Role" / CREATE: INSERT INTO
   function addRole() {
   
-    var query =
-      `SELECT d.id, d.name, r.salary AS budget
-      FROM employee e
-      JOIN role r
-      ON e.role_id = r.id
-      JOIN department d
-      ON d.id = r.department_id
-      GROUP BY d.id, d.name`
+    // var query =
+    //   `SELECT d.id, d.name, r.salary AS budget
+    //   FROM employee e
+    //   JOIN role r
+    //   ON e.role_id = r.id
+    //   JOIN department d
+    //   ON d.id = r.department_id
+    //   GROUP BY d.id, d.name`
+    var query = `SELECT department.id, department.name FROM department;`
   
     connection.query(query, function (err, res) {
       if (err) throw err;
@@ -317,16 +318,15 @@ function viewEmployee() {
   
   function promptAddRole(departmentChoices) {
   
-    inquirer
-      .prompt([
+      prompt([
         {
           type: "input",
-          name: "roleTitle",
+          name: "title",
           message: "Role title?"
         },
         {
           type: "input",
-          name: "roleSalary",
+          name: "salary",
           message: "Role Salary"
         },
         {
@@ -396,14 +396,16 @@ function promptDepartment(departmentChoices) {
   function viewEmployeeByDepartment() {
     console.log("Viewing employees by department\n");
   
+    // var query =
+    //   `SELECT d.id, d.name, r.salary AS budget
+    // FROM employee e
+    // LEFT JOIN role r
+    //   ON e.role_id = r.id
+    // LEFT JOIN department d
+    // ON d.id = r.department_id
+    // GROUP BY d.id, d.name`
     var query =
-      `SELECT d.id, d.name, r.salary AS budget
-    FROM employee e
-    LEFT JOIN role r
-      ON e.role_id = r.id
-    LEFT JOIN department d
-    ON d.id = r.department_id
-    GROUP BY d.id, d.name`
+    `SELECT department.id, department.name FROM department;`
   
     connection.query(query, function (err, res) {
       if (err) throw err;
@@ -411,6 +413,15 @@ function promptDepartment(departmentChoices) {
       const departmentChoices = res.map(data => ({
         value: data.id, name: data.name
       }));
+      // prompt ([
+      //   {
+      //     type:"list",
+      //     name: "departmentId",
+      //     message:"which department will you like to see employees for?",
+      //     choices: departmentChoices
+      //   }
+      // ])
+      // .then((res) => { db }
   
       console.table(res);
       console.log("Department view succeed!\n");
