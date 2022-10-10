@@ -29,8 +29,8 @@ https://kapwi.ng/w/WT3a9uaKVa
 
 ## Test ScreenShot:
 
-![screenshot](./img/Test-1.png)
-![screenshot](./img/Test-2.png)
-![screenshot](./img/Test-3.png)
-![screenshot](./img/Test-4.png)
-![screenshot](./img/Test-5.png)
+![screenshot](./Main/img/Test-1.png)
+![screenshot](./Main/img/Test-2.png)
+![screenshot](./Main/img/Test-3.png)
+![screenshot](./Main/img/Test-4.png)
+![screenshot](./Main/img/Test-5.png)
